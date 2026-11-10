@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PH Consultora</title>
+<meta name="description" content="PH Consultora: resolvemos un problema concreto de tu negocio en 10 días hábiles, a precio fijo. Automatización, tableros de gestión y ordenamiento contable para pymes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: dark ink hero with a 10-day roadmap card, then the fixed-price program as the first and largest offer, services after, contact last. Single light visual world with dark bands. */
+:root{
+  --ink:#0C1726;        /* dark bands, headings */
+  --ink-2:#16263B;      /* cards on dark */
+  --paper:#F5F7F8;      /* page background */
+  --card:#FFFFFF;
+  --line:#DCE3E8;
+  --text:#1B2633;
+  --muted:#5A6878;
+  --accent:#12A38C;     /* pH teal */
+  --accent-ink:#0B7666;
+  --on-dark:#E7EEF3;
+  --on-dark-muted:#9DB0C2;
+  --display:"Manrope", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --wrap:1120px;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-0.02em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.label{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.dark .label{color:var(--accent)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:16px;text-decoration:none;padding:14px 22px;border-radius:10px;border:2px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion: reduce){.btn:hover{transform:none}}
+.btn-primary{background:var(--accent);color:#04241F}
+.btn-primary:hover{background:#17B89F}
+.btn-ghost{border-color:#3A4E66;color:var(--on-dark)}
+.btn-ghost:hover{border-color:var(--on-dark-muted)}
+.btn-outline{border-color:var(--ink);color:var(--ink)}
+
+/* Nav */
+.nav{background:var(--ink);color:var(--on-dark);border-bottom:1px solid #1F3048}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo-mark{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-0.04em;color:#fff}
+.logo-mark span{color:var(--accent)}
+.logo-name{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-muted)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{text-decoration:none;font-size:15px;color:var(--on-dark-muted)}
+.nav-links a:hover{color:#fff}
+.nav-links .btn{padding:10px 16px;font-size:15px;color:#04241F}
+@media (max-width:860px){.nav-links a:not(.btn){display:none}}
+
+/* Hero */
+.hero{background:var(--ink);color:var(--on-dark);padding:72px 0 88px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#1A2B42 1px,transparent 1px),linear-gradient(90deg,#1A2B42 1px,transparent 1px);background-size:48px 48px;opacity:.45;mask-image:linear-gradient(180deg,#000 0%,transparent 90%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 90%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+@media (max-width:920px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(36px,5vw,58px);color:#fff;margin:18px 0 22px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:19px;color:var(--on-dark-muted);max-width:56ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:40px;padding-top:28px;border-top:1px solid #23364F}
+.fact b{display:block;font-family:var(--display);font-size:26px;color:#fff;font-variant-numeric:tabular-nums}
+.fact span{font-size:14px;color:var(--on-dark-muted)}
+
+/* Roadmap card */
+.roadmap{background:var(--ink-2);border:1px solid #263A55;border-radius:16px;padding:26px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.roadmap-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.roadmap-head h3{font-size:18px;color:#fff}
+.chip{font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:999px;background:rgba(18,163,140,.15);color:#5FE0C8;border:1px solid rgba(18,163,140,.35)}
+.days{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-bottom:20px}
+.days i{height:30px;border-radius:5px;background:#22354E}
+.days i.a{background:#2E6E8F}.days i.b{background:#1F8A9A}.days i.c{background:var(--accent)}.days i.d{background:#7BE3CF}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.steps li{display:grid;grid-template-columns:74px 1fr;gap:12px;align-items:baseline;padding-bottom:12px;border-bottom:1px dashed #2A3F5B}
+.steps li:last-child{border-bottom:0;padding-bottom:0}
+.steps .d{font-family:var(--mono);font-size:13px;color:var(--on-dark-muted);font-variant-numeric:tabular-nums}
+.steps strong{color:#fff;font-weight:600;display:block}
+.steps small{color:var(--on-dark-muted);font-size:14px}
+
+/* Sections */
+section{padding:96px 0}
+.section-head{max-width:720px;margin-bottom:48px}
+.section-head h2{font-size:clamp(30px,3.6vw,42px);color:var(--ink);margin:12px 0 16px}
+.section-head p{color:var(--muted);font-size:18px}
+
+/* Featured program */
+.program{display:grid;grid-template-columns:1.25fr .75fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 24px 50px -36px rgba(12,23,38,.45)}
+@media (max-width:920px){.program{grid-template-columns:1fr}}
+.program-main{padding:40px}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:#fff;padding:7px 12px;border-radius:999px}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.program-main h3{font-size:30px;color:var(--ink);margin:18px 0 12px}
+.program-main > p{color:var(--muted);max-width:60ch}
+.includes{display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;margin-top:30px;padding:0;list-style:none}
+@media (max-width:600px){.includes{grid-template-columns:1fr}}
+.includes li{display:grid;grid-template-columns:28px 1fr;gap:10px}
+.tick{width:24px;height:24px;border-radius:7px;background:#E3F5F1;display:grid;place-items:center;margin-top:2px}
+.tick svg{width:14px;height:14px}
+.includes b{display:block;color:var(--ink);font-weight:600}
+.includes span{font-size:15px;color:var(--muted)}
+.program-side{background:var(--ink);color:var(--on-dark);padding:40px;display:flex;flex-direction:column;gap:22px}
+.price-label{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--on-dark-muted)}
+.price{font-family:var(--display);font-weight:800;font-size:34px;color:#fff;line-height:1.1}
+.price small{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--on-dark-muted);margin-top:8px}
+.side-list{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:15px}
+.side-list li{display:flex;gap:10px}
+.side-list li::before{content:"→";color:var(--accent);font-family:var(--mono)}
+.program-side .btn{justify-content:center}
+
+/* Problems strip */
+.problems{margin-top:56px}
+.problems h3{font-size:20px;color:var(--ink);margin-bottom:18px}
+.problem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:920px){.problem-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.problem-grid{grid-template-columns:1fr}}
+.problem{background:transparent;border:1px solid var(--line);border-radius:12px;padding:20px}
+.problem .q{font-family:var(--display);font-weight:700;color:var(--ink);font-size:17px;line-height:1.3;margin-bottom:8px}
+.problem p{font-size:15px;color:var(--muted)}
+
+/* Services */
+.services{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media (max-width:760px){.service-grid{grid-template-columns:1fr}}
+.service{padding:34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.service:nth-child(2n){border-right:0}
+.service:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:760px){.service{border-right:0}.service:nth-last-child(2){border-bottom:1px solid var(--line)}}
+.service .num{font-family:var(--mono);font-size:13px;color:var(--accent-ink)}
+.service h3{font-size:22px;color:var(--ink);margin:10px 0 10px}
+.service p{color:var(--muted);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tags span{font-family:var(--mono);font-size:12px;padding:4px 9px;border-radius:6px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}
+
+/* Method */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:m}
+@media (max-width:920px){.method{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.method{grid-template-columns:1fr}}
+.m{padding-top:22px;border-top:3px solid var(--ink)}
+.m:first-child{border-top-color:var(--accent)}
+.m .n{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.m h3{font-size:19px;color:var(--ink);margin:8px 0}
+.m p{font-size:15px;color:var(--muted)}
+
+/* Team */
+.team{background:var(--ink);color:var(--on-dark)}
+.team .section-head h2{color:#fff}
+.team .section-head p{color:var(--on-dark-muted)}
+.team-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px}
+@media (max-width:920px){.team-grid{grid-template-columns:1fr}}
+.pill-list{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.pill-list span{border:1px solid #2C4260;border-radius:999px;padding:8px 14px;font-size:15px;color:var(--on-dark)}
+.person{background:var(--ink-2);border:1px solid #263A55;border-radius:14px;padding:26px}
+.avatar{width:52px;height:52px;border-radius:12px;background:#22354E;display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--accent);font-size:19px;margin-bottom:16px}
+.person h3{font-size:19px;color:#fff;margin-bottom:6px}
+.person p{font-size:15px;color:var(--on-dark-muted)}
+
+/* Contact */
+.contact-box{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:48px}
+@media (max-width:860px){.contact-box{grid-template-columns:1fr;padding:32px}}
+.contact-box h2{font-size:clamp(28px,3.4vw,40px);color:var(--ink);margin:12px 0 14px}
+.contact-box > div > p{color:var(--muted)}
+.channels{display:grid;gap:14px}
+.channel{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none;background:var(--paper)}
+.channel:hover{border-color:var(--accent)}
+.channel .k{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.channel .v{font-weight:600;color:var(--ink);word-break:break-all}
+.copy{font-family:var(--mono);font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 11px;cursor:pointer;white-space:nowrap}
+.copy:hover{border-color:var(--ink)}
+.icon{width:20px;height:20px;flex:none}
+
+footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="PH Consultora, inicio">
+      <span class="logo-mark">pH<span>.</span></span>
+      <span class="logo-name">Consultora</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#programa">Programa 10 días</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#metodo">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-primary" href="#contacto">Contanos tu problema</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero dark">
+    <div class="wrap">
+      <div>
+        <p class="label">Consultoría de negocio · Tucumán, Argentina</p>
+        <h1>Un problema concreto de tu negocio, <em>con solución en 10 días hábiles.</em></h1>
+        <p class="hero-sub">Analizamos tus procesos y tus números, y te entregamos una solución funcionando o lista para implementar: una automatización, un tablero de gestión o un circuito ordenado. A precio fijo, acordado antes de empezar.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contacto">Contanos tu problema</a>
+          <a class="btn btn-ghost" href="#programa">Ver el programa</a>
+        </div>
+        <div class="hero-facts">
+          <div class="fact"><b>10 días</b><span>hábiles, de punta a punta</span></div>
+          <div class="fact"><b>Precio fijo</b><span>sin horas extra ni sorpresas</span></div>
+          <div class="fact"><b>1 problema</b><span>bien definido y resuelto</span></div>
+        </div>
+      </div>
+
+      <aside class="roadmap" aria-label="Hoja de ruta del programa">
+        <div class="roadmap-head">
+          <h3>Hoja de ruta</h3>
+          <span class="chip">Programa 10 días</span>
+        </div>
+        <div class="days" aria-hidden="true">
+          <i class="a"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="d"></i>
+        </div>
+        <ol class="steps">
+          <li><span class="d">Día 1</span><div><strong>Relevamiento</strong><small>Reunión con vos y tu equipo para definir el problema y la meta.</small></div></li>
+          <li><span class="d">Días 2–5</span><div><strong>Diagnóstico</strong><small>Revisamos procesos, sistemas, planillas y datos reales.</small></div></li>
+          <li><span class="d">Días 6–9</span><div><strong>Solución</strong><small>Construimos el prototipo y lo probamos con tus datos.</small></div></li>
+          <li><span class="d">Día 10</span><div><strong>Entrega</strong><small>Presentación, informe y plan de implementación.</small></div></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+
+  <section id="programa">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Nuestro producto principal</p>
+        <h2>Programa Solución en 10 días</h2>
+        <p>Elegís el problema que más te cuesta hoy. En dos semanas lo entendemos a fondo y te entregamos la solución, con un alcance y un precio cerrados desde el primer día.</p>
+      </div>
+
+      <div class="program">
+        <div class="program-main">
+          <span class="badge">Precio fijo · 10 días hábiles</span>
+          <h3>Qué incluye</h3>
+          <p>Trabajamos sobre un solo problema, bien delimitado, para que el resultado sea concreto y medible.</p>
+          <ul class="includes">
+            <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#0B7666" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Relevamiento inicial</b><span>Una reunión con dirección y las personas que hacen la tarea.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#0B7666" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Mapa del proceso</b><span>Cómo funciona hoy, dónde se pierde tiempo y dónde aparecen errores.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#0B7666" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Solución o prototipo</b><span>Automatización, tablero de indicadores o circuito rediseñado, probado con tus datos.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#0B7666" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Informe y plan de acción</b><span>Próximos pasos, tiempos y costo de implementación completa.</span></div></li>
+          </ul>
+        </div>
+        <div class="program-side">
+          <div>
+            <p class="price-label">Inversión</p>
+            <p class="price">Precio fijo y cerrado<small>Te lo confirmamos después de una primera charla sin cargo, antes de empezar.</small></p>
+          </div>
+          <ul class="side-list">
+            <li>Un solo problema, alcance definido por escrito</li>
+            <li>Entrega en 10 días hábiles</li>
+            <li>Confidencialidad de tus datos</li>
+            <li>Si querés seguir, implementamos por etapas</li>
+          </ul>
+          <a class="btn btn-primary" href="#contacto">Quiero mi diagnóstico</a>
+        </div>
+      </div>
+
+      <div class="problems">
+        <h3>Problemas que podemos resolver en 10 días</h3>
+        <div class="problem-grid">
+          <div class="problem"><p class="q">¿Tus compras no tienen control de precios?</p><p>Alertas cuando un proveedor aumenta por encima de la inflación.</p></div>
+          <div class="problem"><p class="q">¿Armás los reportes a mano cada mes?</p><p>Reportes que se actualizan solos desde tus sistemas y planillas.</p></div>
+          <div class="problem"><p class="q">¿El stock del sistema no coincide con el real?</p><p>Circuito de pedidos, recepción y recuento ordenado y trazable.</p></div>
+          <div class="problem"><p class="q">¿No sabés cuánto te cuesta cada producto o servicio?</p><p>Costeo claro y un tablero con los márgenes que importan.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Servicios</p>
+        <h2>Después del diagnóstico, te acompañamos en la implementación</h2>
+        <p>Combinamos contabilidad, auditoría, datos y tecnología. Entendemos tus números y sabemos cómo automatizarlos.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service">
+          <span class="num">01</span>
+          <h3>Automatización de procesos</h3>
+          <p>Conectamos sistemas, mails y planillas para que las tareas repetitivas se hagan solas: menos horas de carga y menos errores.</p>
+          <div class="tags"><span>Flujos automáticos</span><span>Integraciones</span><span>Bases de datos</span></div>
+        </article>
+        <article class="service">
+          <span class="num">02</span>
+          <h3>Tableros de gestión</h3>
+          <p>Paneles para la dirección y para cada área, con los indicadores que realmente sirven para decidir.</p>
+          <div class="tags"><span>Power BI</span><span>Looker Studio</span><span>KPIs</span></div>
+        </article>
+        <article class="service">
+          <span class="num">03</span>
+          <h3>Orden contable, costos y auditoría interna</h3>
+          <p>Ordenamos tu información contable y de costos, y revisamos tus circuitos para que cada operación quede registrada y controlada.</p>
+          <div class="tags"><span>Costeo</span><span>Trazabilidad</span><span>Control interno</span></div>
+        </article>
+        <article class="service">
+          <span class="num">04</span>
+          <h3>Capacitación en IA y herramientas</h3>
+          <p>Formamos a tu equipo para que use la inteligencia artificial, Excel y Power BI en su trabajo diario, con casos de tu empresa.</p>
+          <div class="tags"><span>IA aplicada</span><span>Excel</span><span>Power BI</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Cómo trabajamos</p>
+        <h2>Entregas cortas, resultados visibles y pago por etapa</h2>
+      </div>
+      <div class="method">
+        <div class="m"><span class="n">Paso 1</span><h3>Primera charla</h3><p>Sin cargo. Nos contás el problema y te decimos si podemos resolverlo en 10 días.</p></div>
+        <div class="m"><span class="n">Paso 2</span><h3>Propuesta cerrada</h3><p>Alcance, entregables y precio fijo, por escrito y antes de empezar.</p></div>
+        <div class="m"><span class="n">Paso 3</span><h3>Programa 10 días</h3><p>Diagnóstico y solución, con avances que podés ver durante el proceso.</p></div>
+        <div class="m"><span class="n">Paso 4</span><h3>Implementación</h3><p>Si querés avanzar, seguimos por etapas y pagás cada etapa terminada.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team dark" id="equipo">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label">Quiénes somos</p>
+        <h2>Un equipo de Tucumán que une números y tecnología</h2>
+        <p>Trabajamos con pymes de todo el país, en forma presencial en Tucumán y remota en el resto de Argentina.</p>
+      </div>
+      <div class="team-grid">
+        <div class="pill-list" aria-label="Áreas de experiencia">
+          <span>Contabilidad</span><span>Auditoría</span><span>Costos</span><span>Análisis de datos</span><span>Automatización</span><span>Desarrollo de software</span><span>Power BI</span><span>Inteligencia artificial</span><span>Docencia universitaria</span>
+        </div>
+        <div class="person">
+          <div class="avatar" aria-hidden="true">FH</div>
+          <h3>María Florencia Herrando</h3>
+          <p>Socia. Contadora, especialista en auditoría y contabilidad, docente universitaria e investigadora.</p>
+        </div>
+        <div class="person">
+          <div class="avatar" aria-hidden="true">AP</div>
+          <h3>Ana Palavecino</h3>
+          <p>Socia. Datos, automatización y soluciones tecnológicas a medida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <p class="label">Contacto</p>
+          <h2>¿Qué problema de tu negocio querés resolver?</h2>
+          <p>Contanos en dos líneas qué te está quitando tiempo o plata. Te respondemos para coordinar una primera charla sin cargo.</p>
+        </div>
+        <div class="channels">
+          <div class="channel">
+            <div>
+              <div class="k">Email</div>
+              <a class="v" href="mailto:phconsultora.tuc@gmail.com?subject=Quiero%20resolver%20un%20problema%20en%2010%20d%C3%ADas">phconsultora.tuc@gmail.com</a>
+            </div>
+            <button class="copy" type="button" id="copy-mail" data-copy="phconsultora.tuc@gmail.com">Copiar</button>
+          </div>
+          <a class="channel" href="https://www.linkedin.com/search/results/companies/?keywords=PH%20Consultora" target="_blank" rel="noopener" id="linkedin-link">
+            <div>
+              <div class="k">LinkedIn</div>
+              <div class="v">PH Consultora</div>
+            </div>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0C1726" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a class="btn btn-outline" href="mailto:phconsultora.tuc@gmail.com?subject=Quiero%20resolver%20un%20problema%20en%2010%20d%C3%ADas" style="justify-content:center">Escribinos ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 PH Consultora · Tucumán, Argentina</span>
+    <span>Tratamos los datos de nuestros clientes con confidencialidad, según la Ley 25.326.</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('copy-mail').addEventListener('click', async function () {
+    const btn = this;
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy);
+      btn.textContent = 'Copiado';
+    } catch (e) {
+      btn.textContent = 'Copialo a mano';
+    }
+    setTimeout(function () { btn.textContent = 'Copiar'; }, 2000);
+  });
+</script>
+</body>
+</html>
