@@ -186,6 +186,33 @@ section{padding:96px 0}
 
 footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* Lead form dialog */
+.btn{font-family:var(--display)}
+button.btn{appearance:none}
+dialog.lead{border:0;padding:0;border-radius:18px;width:min(560px,calc(100% - 32px));max-height:calc(100% - 32px);background:var(--card);color:var(--text);box-shadow:0 40px 80px -30px rgba(12,23,38,.6)}
+dialog.lead::backdrop{background:rgba(8,15,26,.7)}
+.lead-head{background:var(--ink);color:var(--on-dark);padding:26px 28px}
+.lead-head h2{font-size:24px;color:#fff;margin-top:8px}
+.lead-head p{color:var(--on-dark-muted);font-size:15px;margin-top:8px}
+.lead form{padding:26px 28px;display:grid;gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+.field input,.field textarea{width:100%;min-width:0}
+dialog.lead{overflow-x:hidden}
+.field label{font-weight:600;font-size:15px;color:var(--ink)}
+.field label small{font-weight:400;color:var(--muted)}
+.field input,.field textarea{font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--text)}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.field textarea{min-height:90px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.form-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-top:4px}
+.btn-plain{background:transparent;border-color:var(--line);color:var(--ink)}
+.hp{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0)}
+.form-msg{font-size:15px;padding:12px 14px;border-radius:10px;display:none}
+.form-msg.ok{display:block;background:#E3F5F1;color:#0B5B4F}
+.form-msg.err{display:block;background:#FCECEA;color:#8A2A1E}
+.privacy{font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -201,7 +228,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <a href="#servicios">Servicios</a>
       <a href="#metodo">Cómo trabajamos</a>
       <a href="#contacto">Contacto</a>
-      <a class="btn btn-primary" href="#contacto">Contanos tu problema</a>
+      <button class="btn btn-primary js-open" type="button">Contanos tu problema</button>
     </nav>
   </div>
 </header>
@@ -214,7 +241,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <h1>Un problema concreto de tu negocio, <em>con solución en 10 días hábiles.</em></h1>
         <p class="hero-sub">Analizamos tus procesos y tus números, y te entregamos una solución funcionando o lista para implementar: una automatización, un tablero de gestión o un circuito ordenado. A precio fijo, acordado antes de empezar.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contacto">Contanos tu problema</a>
+          <button class="btn btn-primary js-open" type="button">Contanos tu problema</button>
           <a class="btn btn-ghost" href="#programa">Ver el programa</a>
         </div>
         <div class="hero-facts">
@@ -273,7 +300,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
             <li>Confidencialidad de tus datos</li>
             <li>Si querés seguir, implementamos por etapas</li>
           </ul>
-          <a class="btn btn-primary" href="#contacto">Quiero mi diagnóstico</a>
+          <button class="btn btn-primary js-open" type="button">Quiero mi diagnóstico</button>
         </div>
       </div>
 
@@ -371,7 +398,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div>
           <p class="label">Contacto</p>
           <h2>¿Qué problema de tu negocio querés resolver?</h2>
-          <p>Contanos en dos líneas qué te está quitando tiempo o plata. Te respondemos para coordinar una primera charla sin cargo.</p>
+          <p>Contanos en dos líneas qué te está quitando tiempo o plata. Dejanos tus datos y te contactamos para coordinar una primera reunión virtual sin cargo.</p>
         </div>
         <div class="channels">
           <div class="channel">
@@ -388,7 +415,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
             </div>
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0C1726" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           </a>
-          <a class="btn btn-outline" href="mailto:phconsultora.tuc@gmail.com?subject=Quiero%20resolver%20un%20problema%20en%2010%20d%C3%ADas" style="justify-content:center">Escribinos ahora</a>
+          <button class="btn btn-primary js-open" type="button" style="justify-content:center">Pedí tu primera reunión</button>
         </div>
       </div>
     </div>
@@ -402,6 +429,46 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </div>
 </footer>
 
+
+<dialog class="lead" id="lead-dialog" aria-labelledby="lead-title">
+  <div class="lead-head">
+    <p class="label">Programa Solución en 10 días</p>
+    <h2 id="lead-title">Pedí tu primera reunión sin cargo</h2>
+    <p>Dejanos tus datos y te contactamos para coordinar una reunión virtual de 30 minutos y conocer el proceso que querés mejorar.</p>
+  </div>
+  <form id="lead-form" novalidate>
+    <div class="field">
+      <label for="f-nombre">Nombre y apellido</label>
+      <input id="f-nombre" name="Nombre" type="text" autocomplete="name" required>
+    </div>
+    <div class="row2">
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="f-tel">Celular / WhatsApp</label>
+        <input id="f-tel" name="Celular" type="tel" autocomplete="tel" placeholder="381 555 1234" required>
+      </div>
+    </div>
+    <div class="field">
+      <label for="f-empresa">Empresa y rubro <small>(opcional)</small></label>
+      <input id="f-empresa" name="Empresa y rubro" type="text" autocomplete="organization" placeholder="Ej.: distribuidora de alimentos">
+    </div>
+    <div class="field">
+      <label for="f-proceso">¿Qué proceso te gustaría mejorar? <small>(opcional, en pocas líneas)</small></label>
+      <textarea id="f-proceso" name="Proceso a mejorar" placeholder="Ej.: armamos el reporte de ventas a mano todos los meses y nos lleva dos días."></textarea>
+    </div>
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="form-msg" id="form-msg" role="status"></p>
+    <p class="privacy">Usamos tus datos solo para contactarte. No los compartimos con terceros.</p>
+    <div class="form-actions">
+      <button class="btn btn-plain" type="button" id="lead-close">Cancelar</button>
+      <button class="btn btn-primary" type="submit" id="lead-submit">Enviar mis datos</button>
+    </div>
+  </form>
+</dialog>
+
 <script>
   document.getElementById('copy-mail').addEventListener('click', async function () {
     const btn = this;
@@ -412,6 +479,35 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       btn.textContent = 'Copialo a mano';
     }
     setTimeout(function () { btn.textContent = 'Copiar'; }, 2000);
+  });
+
+  // Formulario de contacto: los datos llegan por mail a través de FormSubmit (formsubmit.co)
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/phconsultora.tuc@gmail.com';
+  const dlg = document.getElementById('lead-dialog');
+  const form = document.getElementById('lead-form');
+  const msg = document.getElementById('form-msg');
+  const submitBtn = document.getElementById('lead-submit');
+  function openLead(){ msg.className='form-msg'; msg.textContent=''; if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open',''); document.getElementById('f-nombre').focus(); }
+  document.querySelectorAll('.js-open').forEach(function(b){ b.addEventListener('click', openLead); });
+  document.getElementById('lead-close').addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if (!form.checkValidity()) { msg.className='form-msg err'; msg.textContent='Completá nombre, un email válido y tu celular.'; form.reportValidity(); return; }
+    const data = Object.fromEntries(new FormData(form).entries());
+    data._subject = 'Nuevo contacto web: ' + data.Nombre;
+    data._template = 'table';
+    submitBtn.disabled = true; submitBtn.textContent = 'Enviando…';
+    try {
+      const r = await fetch(FORM_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data) });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      form.reset();
+      msg.className='form-msg ok'; msg.textContent='¡Gracias! Recibimos tus datos y te vamos a contactar en las próximas 48 horas hábiles para coordinar la reunión.';
+    } catch(err) {
+      msg.className='form-msg err'; msg.textContent='No pudimos enviar el formulario. Escribinos a phconsultora.tuc@gmail.com y te respondemos.';
+    } finally {
+      submitBtn.disabled = false; submitBtn.textContent = 'Enviar mis datos';
+    }
   });
 </script>
 </body>
