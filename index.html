@@ -161,14 +161,19 @@ section{padding:96px 0}
 .team{background:var(--ink);color:var(--on-dark)}
 .team .section-head h2{color:#fff}
 .team .section-head p{color:var(--on-dark-muted)}
-.team-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
 @media (max-width:920px){.team-grid{grid-template-columns:1fr}}
 .pill-list{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
 .pill-list span{border:1px solid #2C4260;border-radius:999px;padding:8px 14px;font-size:15px;color:var(--on-dark)}
-.person{background:var(--ink-2);border:1px solid #263A55;border-radius:14px;padding:26px}
+.person{background:var(--ink-2);border:1px solid #263A55;border-radius:14px;padding:30px}
 .avatar{width:52px;height:52px;border-radius:12px;background:#22354E;display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--accent);font-size:19px;margin-bottom:16px}
 .person h3{font-size:19px;color:#fff;margin-bottom:6px}
-.person p{font-size:15px;color:var(--on-dark-muted)}
+.person .role{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:16px}
+.bio{display:grid;gap:12px;font-size:15.5px;color:var(--on-dark-muted);max-width:62ch}
+.bio ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.bio li::marker{color:var(--accent)}
+.team-quote{color:#fff;font-family:var(--display);font-weight:600;font-size:clamp(20px,2.4vw,26px);line-height:1.35;border-left:3px solid var(--accent);padding-left:18px;margin-top:36px;max-width:40ch;text-wrap:balance}
+.bio .quote{color:#fff;font-family:var(--display);font-weight:600;font-size:17px;border-left:3px solid var(--accent);padding-left:14px;margin-top:4px}
 
 /* Contact */
 .contact-box{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:48px}
@@ -281,7 +286,7 @@ dialog.lead{overflow-x:hidden}
         <div class="program-main">
           <span class="badge">Precio fijo · 10 días hábiles</span>
           <h3>Qué incluye</h3>
-          <p>Trabajamos sobre un solo problema, bien delimitado, para que el resultado sea concreto y medible.</p>
+          <p>Trabajamos sobre un solo problema, bien delimitado, para que el resultado sea concreto y medible. Te llevás la solución y el plan de acción, sin compromiso de contratar servicios posteriores.</p>
           <ul class="includes">
             <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#0B7666" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Relevamiento inicial</b><span>Una reunión con dirección y las personas que hacen la tarea.</span></div></li>
             <li><span class="tick"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="#0B7666" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Mapa del proceso</b><span>Cómo funciona hoy, dónde se pierde tiempo y dónde aparecen errores.</span></div></li>
@@ -298,6 +303,7 @@ dialog.lead{overflow-x:hidden}
             <li>Un solo problema, alcance definido por escrito</li>
             <li>Entrega en 10 días hábiles</li>
             <li>Confidencialidad de tus datos</li>
+            <li>Sin obligación de contratar servicios posteriores</li>
             <li>Si querés seguir, implementamos por etapas</li>
           </ul>
           <button class="btn btn-primary js-open" type="button">Quiero mi diagnóstico</button>
@@ -309,7 +315,7 @@ dialog.lead{overflow-x:hidden}
         <div class="problem-grid">
           <div class="problem"><p class="q">¿Tus compras no tienen control de precios?</p><p>Alertas cuando un proveedor aumenta por encima de la inflación.</p></div>
           <div class="problem"><p class="q">¿Armás los reportes a mano cada mes?</p><p>Reportes que se actualizan solos desde tus sistemas y planillas.</p></div>
-          <div class="problem"><p class="q">¿El stock del sistema no coincide con el real?</p><p>Circuito de pedidos, recepción y recuento ordenado y trazable.</p></div>
+          <div class="problem"><p class="q">¿Tenés control sobre tu stock?</p><p>Circuito de pedidos, recepción y recuento ordenado y trazable, con control de lotes y vencimientos si tu negocio lo necesita.</p></div>
           <div class="problem"><p class="q">¿No sabés cuánto te cuesta cada producto o servicio?</p><p>Costeo claro y un tablero con los márgenes que importan.</p></div>
         </div>
       </div>
@@ -356,13 +362,13 @@ dialog.lead{overflow-x:hidden}
     <div class="wrap">
       <div class="section-head">
         <p class="label">Cómo trabajamos</p>
-        <h2>Entregas cortas, resultados visibles y pago por etapa</h2>
+        <h2>Un proceso simple, con avances concretos en cada etapa</h2>
       </div>
       <div class="method">
         <div class="m"><span class="n">Paso 1</span><h3>Primera charla</h3><p>Sin cargo. Nos contás el problema y te decimos si podemos resolverlo en 10 días.</p></div>
         <div class="m"><span class="n">Paso 2</span><h3>Propuesta cerrada</h3><p>Alcance, entregables y precio fijo, por escrito y antes de empezar.</p></div>
         <div class="m"><span class="n">Paso 3</span><h3>Programa 10 días</h3><p>Diagnóstico y solución, con avances que podés ver durante el proceso.</p></div>
-        <div class="m"><span class="n">Paso 4</span><h3>Implementación</h3><p>Si querés avanzar, seguimos por etapas y pagás cada etapa terminada.</p></div>
+        <div class="m"><span class="n">Paso 4</span><h3>Implementación</h3><p>Es opcional: el programa no te obliga a contratar nada más. Si querés avanzar, seguimos por etapas y pagás cada etapa terminada.</p></div>
       </div>
     </div>
   </section>
@@ -371,23 +377,28 @@ dialog.lead{overflow-x:hidden}
     <div class="wrap">
       <div class="section-head">
         <p class="label">Quiénes somos</p>
-        <h2>Un equipo de Tucumán que une números y tecnología</h2>
-        <p>Trabajamos con pymes de todo el país, en forma presencial en Tucumán y remota en el resto de Argentina.</p>
+        <h2>La mirada contable y económica, unida a los datos y la tecnología</h2>
+      </div>
+      <div class="pill-list" aria-label="Áreas de experiencia" style="margin-bottom:32px">
+        <span>Contabilidad</span><span>Auditoría</span><span>Economía</span><span>Econometría</span><span>Costos</span><span>Análisis de datos</span><span>Automatización</span><span>Power BI</span><span>Inteligencia artificial</span>
       </div>
       <div class="team-grid">
-        <div class="pill-list" aria-label="Áreas de experiencia">
-          <span>Contabilidad</span><span>Auditoría</span><span>Costos</span><span>Análisis de datos</span><span>Automatización</span><span>Desarrollo de software</span><span>Power BI</span><span>Inteligencia artificial</span><span>Docencia universitaria</span>
-        </div>
-        <div class="person">
+        <article class="person">
           <div class="avatar" aria-hidden="true">FH</div>
           <h3>María Florencia Herrando</h3>
-          <p>Socia. Contadora, especialista en auditoría y contabilidad, docente universitaria e investigadora.</p>
-        </div>
-        <div class="person">
+          <p class="role">Contadora pública · Esp. en Auditoría y Contabilidad</p>
+          <div class="bio">
+            <p>Docente e investigadora en la Facultad de Ciencias Económicas de la UNT. Une la mirada contable y de auditoría con el análisis de datos y la tecnología: diagnostica procesos, diseña flujos de información, propone automatizaciones, arma tableros de gestión y auditoría en Power BI y capacita equipos en el uso de sistemas e IA.</p>
+          </div>
+        </article>
+        <article class="person">
           <div class="avatar" aria-hidden="true">AP</div>
           <h3>Ana Palavecino</h3>
-          <p>Socia. Datos, automatización y soluciones tecnológicas a medida.</p>
-        </div>
+          <p class="role">Licenciada en Economía · Maestranda en Econometría</p>
+          <div class="bio">
+            <p>Docente de la Facultad de Ciencias Económicas de la UNT. Transforma problemas abstractos con los datos en soluciones concretas y automatizadas. En uno de sus casos recientes, llevó a un cliente que no tenía claros sus costos a una aplicación que sigue sus precios en tiempo real, con tableros de BI incluidos.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
